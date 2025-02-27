@@ -1,20 +1,13 @@
-LXI H, C050H       
-        MOV C, M         
-        MOV B, C           
-        LXI H, C051H   
-        MOV A, M
-        INX H              
-
-FIND_MIN:
-        MOV D, M        
-        CMP D             
-        JC SKIP           
-        MOV A, D         
-
-SKIP:
-        INX H           
-        DCR B              
-        JNZ FIND_MIN    
-
-        STA C060H          
-        HLT
+LXI H, 2000H   
+MOV C, M       
+INX H          
+MVI B, 05H     
+LOOP: MOV A, M 
+CMP C          
+JC SKIP        
+MOV C, A       
+SKIP: INX H    
+DCR B         
+JNZ LOOP      
+STA 3000H      
+HLT          
